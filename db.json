@@ -268,5 +268,13 @@
               "name": "Web Design",
               "imgSrc": "https://cdn.dribbble.com/userupload/16452205/file/original-114536af3a7204d5c3d07990cb0c764a.png?format=webp&resize=400x300&vertical=center"
           }
+    ],
+    "users":[
+        {
+            "username":"venkatsp17",
+            "password": "123456",
+            "email":"venkat123@gmail.com",
+            "id": 1
+        }
     ]
 }

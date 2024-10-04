@@ -29,15 +29,30 @@ app.get("/categories", (req, res) => {
 });
 
 
-// app.post("/posts", (req, res) => {
-//   const newPost = {
-//     id: db.posts.length + 1,
-//     ...req.body,
-//   };
-//   db.posts.push(newPost);
-//   fs.writeFileSync(dbFilePath, JSON.stringify(db, null, 2));
-//   res.status(201).json(newPost);
-// });
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+
+  const user = db.users.find((user) => user.username === username);
+
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+
+  const isPasswordCorrect = user.password === password;  
+
+  if (!isPasswordCorrect) {
+    return res.status(401).json({ error: 'Incorrect password' });
+  }
+
+  res.status(200).json({
+    message: 'Login successful',
+    user: {
+      id: user.id,
+      username: user.username,
+      email: user.email
+    },
+  });
+});
 
 
 // app.post("/comments", (req, res) => {
